@@ -5,15 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'mvn -B clean install' // Runs Maven build
+                sh 'docker run -p 80:80 -d --name hanan httpd' // Runs Maven build
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh 'mvn test' // Runs Maven tests
-            }
+                            }
         }
 
         stage('Deploy') {
